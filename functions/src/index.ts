@@ -28,10 +28,9 @@ const createUserRecordInFirestore = async (user: UserRecord) => {
 };
 
 const informAliBabasOfANewUser = async (user: UserRecord) => {
-  const aliBabas = await usersCollection
-    .where("roles.aliBaba", "==", true)
-    .select("email")
-    .get();
-
+  // const aliBabas = await usersCollection
+  //   .where("roles.aliBaba", "==", true)
+  //   .select("email")
+  //   .get();
   // TODO: decide on a preferred informing method
 };
