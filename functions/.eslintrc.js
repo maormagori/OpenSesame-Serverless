@@ -24,7 +24,9 @@ module.exports = {
     ],
     plugins: ["@typescript-eslint", "import"],
     rules: {
+        // eslint-disable-next-line quote-props
         quotes: ["error", "double"],
         "import/no-unresolved": 0,
+        "linebreak-style": 0,
     },
 };
