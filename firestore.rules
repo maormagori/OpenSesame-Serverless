@@ -6,16 +6,16 @@ service cloud.firestore {
       return request.auth.uid == userId;
     }
 
-    function isAliBaba(userId){
-      return request.auth.uid != null && get(/databases/(database)/documents/users/$(request.auth.uid)).data.roles.aliBaba == "true"
+    function isAliBaba(){
+      return request.auth.uid != null && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.roles.aliBaba == true;
     }
 
     function dataValidation(){
       return request.resource.data.diff(resource.data).affectedKeys().hasOnly(['roles']);
     }
-    match /users/{userId}/ {
-      allow read: if isUserDocument(userId) || isAliBaba(userId) 
-      allow update: if dataValidation() && isAliBaba(userId)
+    match /users/{userId} {
+      allow read: if isUserDocument(userId) || isAliBaba(); 
+      allow update: if dataValidation() && isAliBaba();
     }
   }
 }
