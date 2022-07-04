@@ -9,7 +9,7 @@ export default functions.firestore
   .document("/users/{userId}")
   .onUpdate((change, context) => {
     const updateEvent = {
-      updatedBy: context.auth?.uid,
+      updatedBy: context.auth?.uid ?? "Unknown",
       lastUpdateTime: admin.firestore.FieldValue.serverTimestamp(),
     };
     DB.collection("users")
