@@ -17,5 +17,9 @@ service cloud.firestore {
       allow read: if isUserDocument(userId) || isAliBaba(); 
       allow update: if dataValidation() && isAliBaba();
     }
+
+    match /tokens/{userId} {
+      allow write: if isUserDocument(userId);
+    }
   }
 }
